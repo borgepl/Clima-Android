@@ -210,7 +210,10 @@ public class WeatherController extends AppCompatActivity {
 
 
     // TODO: Add onPause() here:
+    @Override
+    protected void onPause() {
+        super.onPause();
 
-
-
+        if (mLocationManager != null)  mLocationManager.removeUpdates(mLocationListener);
+    }
 }

@@ -32,7 +32,7 @@ public class ChangeCityController extends AppCompatActivity {
             public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
                 String newCity = editTextField.getText().toString();
                 Intent newCityIntent = new Intent(ChangeCityController.this,
-                        WeatherController.class):
+                        WeatherController.class);
                 newCityIntent.putExtra("City", newCity);
                 startActivity(newCityIntent);
                 return false;

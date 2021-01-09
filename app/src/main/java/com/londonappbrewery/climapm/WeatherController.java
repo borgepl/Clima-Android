@@ -87,13 +87,23 @@ public class WeatherController extends AppCompatActivity {
         Intent myIntent = getIntent();
         String city = myIntent.getStringExtra("City");
 
-        Log.d("Clima", "Getting weather for current location");
-        getWeatherForCurrentLocation();
+        if (city != null) {
+            Log.d("Clima", "Getting weather for specific city");
+            getWeatherForNewCity(city);
+        } else {
+            Log.d("Clima", "Getting weather for current location");
+            getWeatherForCurrentLocation();
+        }
     }
 
 
     // TODO: Add getWeatherForNewCity(String city) here:
-
+    private void getWeatherForNewCity(String city) {
+        RequestParams params = new RequestParams();
+        params.put("q", city);
+        params.put("appid", APP_ID);
+        letsDoSomeNetworking(params);
+    }
 
     // TODO: Add getWeatherForCurrentLocation() here:
     private void getWeatherForCurrentLocation() {

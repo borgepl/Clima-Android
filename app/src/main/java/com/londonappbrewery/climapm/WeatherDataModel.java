@@ -7,6 +7,8 @@ public class WeatherDataModel {
 
     // TODO: Declare the member variables here
     private String mTemperature;
+    private String mTempMin;
+    private String mTempMax;
     private int mCondition;
     private String mCity;
     private String mIconName;
@@ -23,8 +25,15 @@ public class WeatherDataModel {
 
             double tempResult = jsonObject.getJSONObject("main").getDouble("temp") - 273.15;
             int roundedValue = (int) Math.rint(tempResult);
-
             weatherData.mTemperature = Integer.toString(roundedValue);
+
+            double tempMinResult = jsonObject.getJSONObject("main").getDouble("temp_min") - 273.15;
+            int roundedMin = (int) Math.rint(tempMinResult);
+            weatherData.mTempMin = Integer.toString(roundedMin);
+
+            double tempMaxResult = jsonObject.getJSONObject("main").getDouble("temp_max") - 273.15;
+            int roundedMax = (int) Math.rint(tempMaxResult);
+            weatherData.mTempMax = Integer.toString(roundedMax);
 
             return weatherData;
 
@@ -72,6 +81,14 @@ public class WeatherDataModel {
 
     public String getTemperature() {
         return mTemperature + "°";
+    }
+
+    public String getTempMin() {
+        return mTempMin + "°";
+    }
+
+    public String getTempMax() {
+        return mTempMax + "°";
     }
 
     public String getCity() {

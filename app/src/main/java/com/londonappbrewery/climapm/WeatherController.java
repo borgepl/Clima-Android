@@ -50,6 +50,8 @@ public class WeatherController extends AppCompatActivity {
     TextView mCityLabel;
     ImageView mWeatherImage;
     TextView mTemperatureLabel;
+    TextView mTempMaxLabel;
+    TextView mTempMinLabel;
 
     // TODO: Declare a LocationManager and a LocationListener here:
     LocationManager mLocationManager;
@@ -64,6 +66,9 @@ public class WeatherController extends AppCompatActivity {
         mCityLabel = (TextView) findViewById(R.id.locationTV);
         mWeatherImage = (ImageView) findViewById(R.id.weatherSymbolIV);
         mTemperatureLabel = (TextView) findViewById(R.id.tempTV);
+        mTempMaxLabel = findViewById(R.id.tempMax);
+        mTempMinLabel = findViewById(R.id.tempMin);
+
         ImageButton changeCityButton = (ImageButton) findViewById(R.id.changeCityButton);
 
 
@@ -202,6 +207,8 @@ public class WeatherController extends AppCompatActivity {
     // TODO: Add updateUI() here:
         private void updateUI(WeatherDataModel weather) {
             mTemperatureLabel.setText(weather.getTemperature());
+            mTempMaxLabel.setText(weather.getTempMax());
+            mTempMinLabel.setText(weather.getTempMin());
             mCityLabel.setText(weather.getCity());
 
             int resourceID = getResources().getIdentifier(weather.getIconName(), "drawable", getPackageName());
